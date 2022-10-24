@@ -7,10 +7,10 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
 //import from project
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import HomePage from './pages/HomePage';
-import ProtectedComponent from './components/ProtectedComponent';
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import HomePage from "./pages/HomePage";
+import ProtectedComponent from "./components/ProtectedComponent";
 import DetailMoviePage from "./pages/DetailMoviePage";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
@@ -22,7 +22,6 @@ root.render(
       <Routes>
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-
         <Route
           path="/"
           element={
@@ -36,7 +35,7 @@ root.render(
           }
         />
         <Route
-          path="/detail"
+          path="/:movieId"
           element={
             <ProtectedComponent>
               <Header />

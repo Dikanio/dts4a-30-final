@@ -11,7 +11,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import ProtectedComponent from './components/ProtectedComponent';
-import DetailMovie from './components/DetailMovie';
+import DetailMoviePage from "./pages/DetailMoviePage";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 
@@ -30,6 +30,18 @@ root.render(
               <Header />
               <Box sx={{ background: "#141414" }}>
                 <HomePage />
+              </Box>
+              <Footer />
+            </ProtectedComponent>
+          }
+        />
+        <Route
+          path="/detail"
+          element={
+            <ProtectedComponent>
+              <Header />
+              <Box sx={{ background: "#141414" }}>
+                <DetailMoviePage />
               </Box>
               <Footer />
             </ProtectedComponent>

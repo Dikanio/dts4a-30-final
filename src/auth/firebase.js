@@ -73,13 +73,29 @@ const registrasiEmailPassowrd = async (email, password) => {
 //fungsi login
 
 const signInEmail = async (email, password) => {
+    const response ={}
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
+        response.success = true;
+        response.message = 'Create Accoung Successfully';
+        //test
         console.log(userCredential.user);
+        return response;
     } catch (err) {
         console.log(err.code)
         console.log(err.message)
+        if(err.code=='auth/wrong-password'){
+            response.message = 'Wrong Password';
+        }else if(err.code ==='auth/user-not-found'){
+            
+            response.message = 'User Not Found';
+        }
+        else{
+
+            response.message = err.code;
+        }
+        response.success = false;
+        return response;
     };
 }
 

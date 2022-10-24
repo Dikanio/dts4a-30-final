@@ -1,17 +1,14 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { Grid, createStyles } from '@mui/material';
-import { makeStyles } from 'tss-react/mui';
+import { Grid } from '@mui/material';
 
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
-import gundala from "../assets/images/gundala.jpg"
-
-export default function DetailMovie({ images, detail }) {
+export default function DetailMovie({ movie }) {
 
   // const classes = useStyles();
 
@@ -22,29 +19,38 @@ export default function DetailMovie({ images, detail }) {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      style={{ minHeight: '100vh' }}
+      style={{ minHeight: '50vh' }}
+      maxWidth="false"
     >
 
       <Grid item xs={3}>
-        <Card sx={{ maxWidth: 800 }} display="inline-block" >
+        <Card sx={{ maxHeight: "500px",borderRadius: 1 }} display="inline-block" >
 
           <div style={{ position: "relative" }}>
             <CardMedia
               component="img"
               alt="green iguana"
-              image={images}
+              image={movie.image}
+              sx={{ width: "100%", height: "100%" }}
             />
-            <div style={{ position: "absolute", color: "white", top: "25%", left: "30%", transform: "translateX(-50%)", maxWidth: '50%', maxHeight:'300px'}}>
+            <div style={{ position: "absolute", color: "white", top: "25%", left: "35%", transform: "translateX(-50%)", maxWidth: '70%', maxHeight: '300px' }}>
 
               <Typography gutterBottom variant="h4" component="div">
                 Title
               </Typography>
 
               <Typography gutterBottom variant="caption" component="div">
-                {detail} 
+                {movie.description}
               </Typography>
-              {/* <Button sx={{ backgroundColor: 'white', color: 'black' }}  >Play</Button> */}
+              {/* <Button variant='outlined' >Play</Button> */}
+              <Button sx={{ marginRight:1,marginBottom:1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'white', color: 'black', ":hover": { backgroundColor: 'grey' } }}  >
+                <PlayArrowIcon />Play
+              </Button>
+              <Button sx={{opacity:0.5, border:1, marginRight:1,marginBottom:1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'black', color: 'white', ":hover": { backgroundColor: 'grey' } }}  >
+                <InfoOutlinedIcon /> More Information
+              </Button>
             </div>
+            
           </div>
 
         </Card>

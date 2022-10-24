@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box,  Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation as SwiperNavigation } from "swiper";
 
@@ -29,7 +29,7 @@ export default function MovieList({ images, section, type }) {
                 src={item}
                 sx={{
                   width: "285px",
-                  height: type == "image" ? "160px" : "575px",
+                  height: type === "image" ? "160px" : "575px",
                 }}
               />
             </SwiperSlide>

@@ -1,8 +1,4 @@
 
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { auth } from "../auth/firebase";
-import { useAuthState } from "react-firebase-hooks/auth"
 import React from "react";
 // material-ui
 import { useTheme } from '@mui/material/styles';

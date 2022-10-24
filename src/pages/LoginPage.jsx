@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import '@fontsource/roboto/400.css'
 
 import {
-    Box,
     Button,
     Stack,
     InputLabel,
@@ -43,7 +42,7 @@ function LoginPage() {
     //     console.log(showPassword)
     // };
 
-    const [checked, setChecked] = React.useState(false);
+    // const [checked, setChecked] = React.useState(false);
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -91,7 +90,13 @@ function LoginPage() {
                         })}
                         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                             try {
-                                signInEmail(values.email, values.password);
+                                
+                                const loginAccount = signInEmail(values.email, values.password);
+                                if (!(await loginAccount).success) {
+                                    setStatus({ success: false });
+                                    setErrors({ submit: (await loginAccount).message });
+                                    setSubmitting(false);
+                                } 
                                 setStatus({ success: true });
                                 setSubmitting(false);
                             } catch (err) {

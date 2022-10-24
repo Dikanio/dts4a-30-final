@@ -1,10 +1,9 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation as SwiperNavigation } from "swiper";
+
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
-import { Box, Container, Grid, Typography } from "@mui/material";
+import { Container,  } from "@mui/material";
 import MovieList from "../components/MovieList";
 import DetailMovie from "../components/DetailMovie";
 const movies = [
@@ -56,7 +55,7 @@ const posters = [
 export default function DetailMoviePage() {
   return (
     <Container maxWidth="false">
-      <DetailMovie images={images} detail={''} />
+      <DetailMovie movie={movies[0]}  />
       <MovieList images={images} section="Popular" />
       <MovieList images={images} section="Continue Watching" />
       <MovieList images={images} section="On the agenda" />

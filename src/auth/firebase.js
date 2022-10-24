@@ -60,7 +60,7 @@ const registrasiEmailPassowrd = async (email, password) => {
     } catch (err) {
         console.log(err.code)
         console.log(err.message)
-        if(err.code=='auth/email-already-in-use'){
+        if(err.code==='auth/email-already-in-use'){
             response.message = 'Email Already in Use';
         }else{
 
@@ -84,7 +84,7 @@ const signInEmail = async (email, password) => {
     } catch (err) {
         console.log(err.code)
         console.log(err.message)
-        if(err.code=='auth/wrong-password'){
+        if(err.code==='auth/wrong-password'){
             response.message = 'Wrong Password';
         }else if(err.code ==='auth/user-not-found'){
             

@@ -1,4 +1,6 @@
-import { Box,  Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import { Box, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation as SwiperNavigation } from "swiper";
 
@@ -7,9 +9,16 @@ import "swiper/css";
 import "swiper/css/navigation";
 
 export default function MovieList({ images, section, type }) {
+  let navigate = useNavigate();
+
   if (!type) {
     type = "image";
   }
+
+  const navigateToDetail = (movieId) => {
+    navigate(`/${movieId}`);
+  };
+
   return (
     <Box sx={{ paddingTop: 2, paddingBottom: 2 }}>
       <Typography sx={{ color: "#E5E5E5", fontWeight: 500, fontSize: "26px" }}>
@@ -25,11 +34,21 @@ export default function MovieList({ images, section, type }) {
           return (
             <SwiperSlide key={key}>
               <Box
+                onClick={() => {
+                  navigateToDetail(item.id);
+                }}
                 component="img"
-                src={item}
+                src={
+                  type == "image"
+                    ? `https://image.tmdb.org/t/p/original${item.backdrop_path}`
+                    : `https://image.tmdb.org/t/p/original${item.poster_path}`
+                }
                 sx={{
                   width: "285px",
                   height: type === "image" ? "160px" : "575px",
+                  ":hover": {
+                    cursor: "pointer",
+                  },
                 }}
               />
             </SwiperSlide>

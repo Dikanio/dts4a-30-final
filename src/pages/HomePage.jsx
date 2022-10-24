@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation as SwiperNavigation } from "swiper";
 
@@ -7,57 +8,41 @@ import "swiper/css/navigation";
 import { Box, Container, Grid, Typography } from "@mui/material";
 import MovieList from "../components/MovieList";
 
-const movies = [
-  {
-    title: "Black Adam",
-    description:
-      "Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.",
-    image: require("../assets/images/black-adam.jpg"),
-  },
-  {
-    title: "Beast",
-    description:
-      "A recently widowed man and his two teenage daughters travel to a game reserve in South Africa. However, their journey of healing soon turns into a fight for survival when a bloodthirsty lion starts to stalk them.",
-    image: require("../assets/images/beast.jpg"),
-  },
-];
-
-const images = [
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-  require("../assets/images/beast.jpg"),
-];
-
-const posters = [
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-  require("../assets/images/poster-1.png"),
-];
+// zustand
+import useMovie, {
+  selectNowPlaying,
+  selectGetNowPlaying,
+  selectPopular,
+  selectGetPopular,
+  selectTopRated,
+  selectGetTopRated,
+  selectUpComing,
+  selectGetUpComing,
+} from "../stores/Movie";
 
 export default function HomePage() {
+  const nowPlaying = useMovie(selectNowPlaying);
+  const getNowPlaying = useMovie(selectGetNowPlaying);
+
+  const popular = useMovie(selectPopular);
+  const getPopular = useMovie(selectGetPopular);
+
+  const upComing = useMovie(selectUpComing);
+  const getUpComing = useMovie(selectGetUpComing);
+
+  const topRated = useMovie(selectTopRated);
+  const getTopRated = useMovie(selectGetTopRated);
+
+  useEffect(() => {
+    getNowPlaying();
+    getPopular();
+    getUpComing();
+    getTopRated();
+  }, []);
   return (
     <Container maxWidth="false">
       <Swiper navigation={true} modules={[SwiperNavigation]}>
-        {movies.map((items, key) => {
+        {nowPlaying.map((items, key) => {
           return (
             <SwiperSlide key={key}>
               <Box sx={{ background: "#040b16", height: "420px" }}>
@@ -69,7 +54,7 @@ export default function HomePage() {
                         fontSize: "30px",
                       }}
                     >
-                      {items.title}
+                      {items.original_title}
                     </Typography>
                     <Typography
                       sx={{
@@ -78,13 +63,13 @@ export default function HomePage() {
                         fontSize: "20px",
                       }}
                     >
-                      {items.description}
+                      {items.overview}
                     </Typography>
                   </Grid>
                   <Grid item md={6}>
                     <Box
                       component="img"
-                      src={items.image}
+                      src={`https://image.tmdb.org/t/p/original${items.backdrop_path}`}
                       sx={{ width: "100%", height: "100%" }}
                     />
                   </Grid>
@@ -94,10 +79,9 @@ export default function HomePage() {
           );
         })}
       </Swiper>
-      <MovieList images={images} section="Popular" />
-      <MovieList images={images} section="Continue Watching" />
-      <MovieList images={images} section="On the agenda" />
-      <MovieList images={posters} section="Original" type="poster" />
+      <MovieList images={popular} section="Popular" />
+      <MovieList images={upComing} section="Up Coming" />
+      <MovieList images={topRated} section="Top Rated" type="poster" />
     </Container>
   );
 }

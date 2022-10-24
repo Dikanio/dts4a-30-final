@@ -7,10 +7,11 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
 //import from project
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import HomePage from "./pages/HomePage";
-import ProtectedComponent from "./components/ProtectedComponent";
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import ProtectedComponent from './components/ProtectedComponent';
+import DetailMovie from './components/DetailMovie';
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 

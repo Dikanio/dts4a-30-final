@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { Container,  } from "@mui/material";
 import MovieList from "../components/MovieList";
 import DetailMovie from "../components/DetailMovie";
+
 const movies = [
   {
     title: "Black Adam",
@@ -53,6 +54,7 @@ const posters = [
 ];
 
 export default function DetailMoviePage() {
+  
   return (
     <Container maxWidth="false">
       <DetailMovie movie={movies[0]}  />

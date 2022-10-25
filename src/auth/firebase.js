@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup,updateProfile  } from "firebase/auth";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -47,19 +47,24 @@ const signInWithGoogle = async () => {
 
 
 //fungsi untuk registrasi
-const registrasiEmailPassowrd = async (email, password) => {
+const registrasiEmailPassowrd = async (firstname,lastname,email, password) => {
     const response ={}
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        
+
+        //update display name
+        await updateProfile(auth.currentUser,{displayName:firstname+' '+lastname} )
+
         //aturan firebase setelah register maka akan otomatis langsung login/signin
         response.success = true;
         response.message = 'Create Accoung Successfully';
         //test
-        console.log(userCredential.user);
+        // console.log(userCredential.user);
         return response;
     } catch (err) {
-        console.log(err.code)
-        console.log(err.message)
+        // console.log(err.code)
+        // console.log(err.message)
         if(err.code==='auth/email-already-in-use'){
             response.message = 'Email Already in Use';
         }else{

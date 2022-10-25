@@ -86,7 +86,8 @@ function RegisterPage() {
             <Grid item xs={12}>
                 <Formik
                     initialValues={{
-
+                        firstname:'',
+                        lastname:'',
                         email: '',
                         password: '',
                         submit: null
@@ -98,12 +99,12 @@ function RegisterPage() {
                     onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                         try {
 
-                            const createAccount = registrasiEmailPassowrd(values.email, values.password);
+                            const createAccount = registrasiEmailPassowrd(values.firstname,values.lastname,values.email, values.password);
                             if (!(await createAccount).success) {
                                 setStatus({ success: false });
                                 setErrors({ submit: (await createAccount).message });
                                 setSubmitting(false);
-                            } 
+                            }
                             // setErrors({ submit: 'error bor' });
                             // setStatus({ success: false });
                             // setSubmitting(false);
@@ -118,7 +119,49 @@ function RegisterPage() {
                     {({ errors, handleBlur, handleChange, handleSubmit, isSubmitting, touched, values }) => (
                         <form noValidate onSubmit={handleSubmit}>
                             <Grid container spacing={3}>
-
+                                <Grid item xs={12} md={6}>
+                                    <Stack spacing={1}>
+                                        <InputLabel htmlFor="firstname-signup">First Name*</InputLabel>
+                                        <OutlinedInput
+                                            id="firstname-login"
+                                            type="firstname"
+                                            value={values.firstname}
+                                            name="firstname"
+                                            onBlur={handleBlur}
+                                            onChange={handleChange}
+                                            placeholder="Dts"
+                                            fullWidth
+                                            error={Boolean(touched.firstname && errors.firstname)}
+                                        />
+                                        {touched.firstname && errors.firstname && (
+                                            <FormHelperText error id="helper-text-firstname-signup">
+                                                {errors.firstname}
+                                            </FormHelperText>
+                                        )}
+                                    </Stack>
+                                </Grid>
+                                <Grid item xs={12} md={6}>
+                                    <Stack spacing={1}>
+                                        <InputLabel htmlFor="lastname-signup">Last Name*</InputLabel>
+                                        <OutlinedInput
+                                            fullWidth
+                                            error={Boolean(touched.lastname && errors.lastname)}
+                                            id="lastname-signup"
+                                            type="lastname"
+                                            value={values.lastname}
+                                            name="lastname"
+                                            onBlur={handleBlur}
+                                            onChange={handleChange}
+                                            placeholder="Kominfo"
+                                            inputProps={{}}
+                                        />
+                                        {touched.lastname && errors.lastname && (
+                                            <FormHelperText error id="helper-text-lastname-signup">
+                                                {errors.lastname}
+                                            </FormHelperText>
+                                        )}
+                                    </Stack>
+                                </Grid>
                                 <Grid item xs={12}>
                                     <Stack spacing={1}>
                                         <InputLabel htmlFor="email-signup" sx={{ fontSize: 12 }}>Email Address*</InputLabel>

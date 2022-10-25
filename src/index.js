@@ -12,6 +12,7 @@ import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import ProtectedComponent from './components/ProtectedComponent';
 import DetailMoviePage from "./pages/DetailMoviePage";
+import SearchMoviePage from "./pages/SearchMoviePage";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 
@@ -42,6 +43,18 @@ root.render(
               <Header />
               <Box sx={{ background: "#141414" }}>
                 <DetailMoviePage />
+              </Box>
+              <Footer />
+            </ProtectedComponent>
+          }
+        />
+        <Route
+          path="/search"
+          element={
+            <ProtectedComponent>
+              <Header />
+              <Box sx={{ background: "#141414" }}>
+                <SearchMoviePage />
               </Box>
               <Footer />
             </ProtectedComponent>

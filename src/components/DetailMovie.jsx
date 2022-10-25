@@ -24,7 +24,7 @@ export default function DetailMovie({ movie }) {
     >
 
       <Grid item xs={3}>
-        <Card sx={{ maxHeight: "500px",borderRadius: 1 }} display="inline-block" >
+        <Card sx={{ maxHeight: "500px", borderRadius: 1 }} display="inline-block" >
 
           <div style={{ position: "relative" }}>
             <CardMedia
@@ -36,21 +36,21 @@ export default function DetailMovie({ movie }) {
             <div style={{ position: "absolute", color: "white", top: "25%", left: "35%", transform: "translateX(-50%)", maxWidth: '70%', maxHeight: '300px' }}>
 
               <Typography gutterBottom variant="h4" component="div">
-                Title
+                {movie.title}
               </Typography>
 
               <Typography gutterBottom variant="caption" component="div">
                 {movie.description}
               </Typography>
               {/* <Button variant='outlined' >Play</Button> */}
-              <Button sx={{ marginRight:1,marginBottom:1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'white', color: 'black', ":hover": { backgroundColor: 'grey' } }}  >
+              <Button sx={{ marginRight: 1, marginBottom: 1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'white', color: 'black', ":hover": { backgroundColor: 'grey' } }}  >
                 <PlayArrowIcon />Play
               </Button>
-              <Button sx={{opacity:0.5, border:1, marginRight:1,marginBottom:1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'black', color: 'white', ":hover": { backgroundColor: 'grey' } }}  >
+              <Button sx={{ opacity: 0.5, border: 1, marginRight: 1, marginBottom: 1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'black', color: 'white', ":hover": { backgroundColor: 'grey' } }}  >
                 <InfoOutlinedIcon /> More Information
               </Button>
             </div>
-            
+
           </div>
 
         </Card>

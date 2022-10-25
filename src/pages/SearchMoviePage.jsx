@@ -1,46 +1,68 @@
-import React from "react";
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
-import { styled } from '@mui/material/styles';
+import React, { useEffect } from "react";
+import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+// import { styled } from '@mui/material/styles';
 
 
 import {
     Grid,
-    Paper,
 } from '@mui/material';
 import beast from "../assets/images/beast.jpg"
+// zustand
+import useMovie, {
+    selectMovies,
+    selectGetMovieByKeyword
+} from "../stores/Movie";
 
-
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    maxHeight: '200px',
-    color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//     ...theme.typography.body2,
+//     padding: theme.spacing(1),
+//     textAlign: 'center',
+//     maxHeight: '200px',
+//     color: theme.palette.text.secondary,
+// }));
 export default function SearchMoviePage() {
+
+    const movieByKeyword = useMovie(selectGetMovieByKeyword);
+    const movies = useMovie(selectMovies);
+    let navigate = useNavigate();
+    let { keyWord } = useParams();
+    useEffect(() => {
+
+        // movieByKeyword(keyWord)
+
+    }, []);
+    const navigateToDetail = (movieId) => {
+        // getByID(movieId);
+        navigate(`/${movieId}`);
+        window.location.reload(false);
+    };
+
     return (
         <>
             <Grid container spacing={2} sx={{ display: "flex-container" }} p={2}>
                 {itemData.map((item) => (
-                    <Grid item xs={3} key ={item.title}>
+                    <Grid item xs={3} key={item.title} sx={{
+                        ":hover": {
+                            cursor: "pointer",
+                        },
+                    }}>
                         <img
+                            onClick={() => {
+                                navigateToDetail(item.title);
+                            }}
                             src={`${beast}`}
                             srcSet={`${beast}`}
                             alt={item.title}
                             loading={"lazy"}
                             width={'100%'}
-                            onClick={()=>{console.log(item.title)}}
+
                         />
 
                     </Grid>
                 ))}
-                
+
 
             </Grid>
         </>

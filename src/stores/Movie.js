@@ -65,4 +65,6 @@ export const selectGetTopRated = (state) => state.getTopRated;
 
 export const selectGetMovieByKeyword = (state) => state.getMovieByKeyword;
 
+export const selectMovieById = (state) =>state.getMovie;
+
 export default useMovie;

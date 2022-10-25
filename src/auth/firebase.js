@@ -5,12 +5,10 @@ import { initializeApp } from "firebase/app";
 
 import { getAuth, GoogleAuthProvider, signInWithPopup,updateProfile  } from "firebase/auth";
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    sendPasswordResetEmail,
-    signOut
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBv0pH4aA0nzziVWqXKoDON4EBfNzofV4M",
@@ -18,33 +16,27 @@ const firebaseConfig = {
   projectId: "dts2022-e0321",
   storageBucket: "dts2022-e0321.appspot.com",
   messagingSenderId: "195160060654",
-  appId: "1:195160060654:web:c39583c5f2a4d6ec6ff9ff"
+  appId: "1:195160060654:web:c39583c5f2a4d6ec6ff9ff",
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-
 //untuk GOOGLE
 const googleProvider = new GoogleAuthProvider();
 googleProvider.addScope("profile");
 googleProvider.addScope("email");
-googleProvider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-
-
-
+googleProvider.addScope("https://www.googleapis.com/auth/contacts.readonly");
 
 const signInWithGoogle = async () => {
-    try {
-        const userCredential = await signInWithPopup(auth, googleProvider);
-        console.log(userCredential);
-
-    } catch (err) {
-        console.log(err);
-    }
-}
-
+  try {
+    const userCredential = await signInWithPopup(auth, googleProvider);
+    console.log(userCredential);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 //fungsi untuk registrasi
 const registrasiEmailPassowrd = async (firstname,lastname,email, password) => {
@@ -75,47 +67,47 @@ const registrasiEmailPassowrd = async (firstname,lastname,email, password) => {
         return response;
     };
 }
+
 //fungsi login
 
 const signInEmail = async (email, password) => {
-    const response ={}
-    try {
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-        response.success = true;
-        response.message = 'Create Accoung Successfully';
-        //test
-        console.log(userCredential.user);
-        return response;
-    } catch (err) {
-        console.log(err.code)
-        console.log(err.message)
-        if(err.code==='auth/wrong-password'){
-            response.message = 'Wrong Password';
-        }else if(err.code ==='auth/user-not-found'){
-            
-            response.message = 'User Not Found';
-        }
-        else{
-
-            response.message = err.code;
-        }
-        response.success = false;
-        return response;
-    };
-}
-
+  const response = {};
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    response.success = true;
+    response.message = "Create Accoung Successfully";
+    //test
+    console.log(userCredential.user);
+    return response;
+  } catch (err) {
+    console.log(err.code);
+    console.log(err.message);
+    if (err.code === "auth/wrong-password") {
+      response.message = "Wrong Password";
+    } else if (err.code === "auth/user-not-found") {
+      response.message = "User Not Found";
+    } else {
+      response.message = err.code;
+    }
+    response.success = false;
+    return response;
+  }
+};
 
 //fungsi untuk reset password
 
 //fungsi logout
 const logOut = async () => {
-    try {
-        await signOut(auth);
-    } catch (err) {
-        console.log(err.code)
-        console.log(err.message)
-    };
-}
+  try {
+    await signOut(auth);
+  } catch (err) {
+    console.log(err.code);
+    console.log(err.message);
+  }
+};
 
-
-export { auth, signInEmail, logOut, registrasiEmailPassowrd,  signInWithGoogle };
+export { auth, signInEmail, logOut, registrasiEmailPassowrd, signInWithGoogle };

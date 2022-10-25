@@ -16,7 +16,11 @@ const sliceMovie = (set) => ({
   },
 
   getMovieByKeyword: async (keyword) => {
-    const { data } = await axios.get(`/search/movie/${keyword}`);
+    const { data } = await axios.get(`/search/movie/`, {
+      params: {
+        query: keyword,
+      },
+    });
 
     set({ movies: data.results });
   },

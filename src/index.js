@@ -16,6 +16,7 @@ import SearchMoviePage from "./pages/SearchMoviePage";
 import Header from "./components/layouts/Header";
 import Footer from "./components/layouts/Footer";
 
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -48,7 +49,7 @@ root.render(
           }
         />
         <Route
-          path="/search"
+          path="/find/:keyWord"
           element={
             <ProtectedComponent>
               <Header />

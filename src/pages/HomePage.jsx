@@ -67,6 +67,7 @@ export default function HomePage() {
                     </Typography>
                   </Grid>
                   <Grid item md={6}>
+                    
                     <Box
                       component="img"
                       src={`https://image.tmdb.org/t/p/original${items.backdrop_path}`}

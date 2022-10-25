@@ -29,8 +29,9 @@ export default function DetailMovie({ movie }) {
           <div style={{ position: "relative" }}>
             <CardMedia
               component="img"
-              alt="green iguana"
-              image={movie.image}
+              alt="Movie"
+              image={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+              }
               sx={{ width: "100%", height: "100%" }}
             />
             <div style={{ position: "absolute", color: "white", top: "25%", left: "35%", transform: "translateX(-50%)", maxWidth: '70%', maxHeight: '300px' }}>
@@ -40,7 +41,7 @@ export default function DetailMovie({ movie }) {
               </Typography>
 
               <Typography gutterBottom variant="caption" component="div">
-                {movie.description}
+                {movie.overview}
               </Typography>
               {/* <Button variant='outlined' >Play</Button> */}
               <Button sx={{ marginRight: 1, marginBottom: 1, borderRadius: 0.5, minWidth: '100px', textTransform: 'none', backgroundColor: 'white', color: 'black', ":hover": { backgroundColor: 'grey' } }}  >

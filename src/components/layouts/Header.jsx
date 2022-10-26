@@ -116,8 +116,8 @@ export default function Header({ props }) {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             <Link style={{textDecoration: 'none',color:"white"}}  to="/" relative="path">
-            Welcome {user.displayName}
-
+            {/* Welcome {user.displayName} */}
+            Welcome
             </Link>
            
           </Typography>

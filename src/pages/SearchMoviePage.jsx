@@ -27,22 +27,22 @@ export default function SearchMoviePage() {
     const movieByKeyword = useMovie(selectGetMovieByKeyword);
     const movies = useMovie(selectMovies);
     let navigate = useNavigate();
-    let { keyWord } = useParams();
-    useEffect(() => {
+    // let { keyWord } = useParams();
+    // useEffect(() => {
 
-        movieByKeyword(keyWord)
+    //     movieByKeyword(keyWord)
 
-    }, []);
+    // }, []);
     const navigateToDetail = (movieId) => {
         // getByID(movieId);
         navigate(`/${movieId}`);
-        window.location.reload(false);
+        // window.location.reload(false);
     };
     return (
         <>
             <Grid container spacing={2} sx={{ display: "flex-container" }} p={2}>
                 {movies.map((item) => (
-                    <Grid item xs={3} key={item.title} sx={{
+                    <Grid item xs={3} key={item.id} sx={{
                         ":hover": {
                             cursor: "pointer",
                         },

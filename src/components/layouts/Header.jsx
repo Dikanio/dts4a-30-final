@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppBar, Box, Button, Toolbar, Typography, Grid } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../auth/firebase";
@@ -6,10 +6,16 @@ import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import LogoutIcon from '@mui/icons-material/LogoutRounded';
+import { Link } from "react-router-dom";
 //displayname
 import { auth } from "../../auth/firebase";
 import { useAuthState } from "react-firebase-hooks/auth"
 
+// zustand
+import useMovie, {
+  selectMovies,
+  selectGetMovieByKeyword
+} from "../../stores/Movie";
 
 const Search = styled('div')(({ theme }) => ({
   position: "relative",
@@ -61,6 +67,9 @@ export default function Header({ props }) {
   };
   const navigate = useNavigate();
 
+  const movieByKeyword = useMovie(selectGetMovieByKeyword);
+  const movies = useMovie(selectMovies);
+
   const [keyword, setKeyword] = useState("");
 
   const onChangeKeyword = (evt) => {
@@ -68,7 +77,8 @@ export default function Header({ props }) {
   };
   const searchMovie = (evt) => {
     evt.preventDefault();
-    navigate(`/find/${keyword}`);
+    movieByKeyword(keyword)
+    navigate(`/find`);
   };
   return (
     // <Box sx={{ backgroundColor: "#141414" }}>
@@ -105,9 +115,13 @@ export default function Header({ props }) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Welcome
-            {/* Welcome {user.displayName} */}
+            <Link style={{textDecoration: 'none',color:"white"}}  to="/" relative="path">
+            Welcome {user.displayName}
+
+            </Link>
+           
           </Typography>
+
 
           <Search>
             <SearchIconWrapper>

@@ -49,7 +49,7 @@ root.render(
           }
         />
         <Route
-          path="/find/:keyWord"
+          path="/find"
           element={
             <ProtectedComponent>
               <Header />

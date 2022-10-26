@@ -2,7 +2,7 @@ import create from "zustand";
 import axios from "../utils/axios";
 
 const sliceMovie = (set) => ({
-  movie: {},
+  movie: [],
   movies: [],
   nowPlaying: [],
   popular: [],
@@ -11,7 +11,6 @@ const sliceMovie = (set) => ({
 
   getMovie: async (movieId) => {
     const { data } = await axios.get(`/movie/${movieId}`);
-
     set({ movie: data });
   },
 

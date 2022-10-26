@@ -11,3 +11,5 @@ https://dts4a-30-final.netlify.app/
 - State Management yang digunakan adalah zustand 
 - form daftar dan login menggunakan third party (Formik dan Yup) untuk validasi 
 
+# example
+![](view.png)

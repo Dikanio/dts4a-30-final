@@ -71,7 +71,10 @@ export default function Header({ props }) {
   // const movies = useMovie(selectMovies);
 
   const [keyword, setKeyword] = useState("");
-
+  if (!user) {
+    navigate("/login");
+    return;
+  }
   const onChangeKeyword = (evt) => {
     setKeyword(evt.target.value);
   };
@@ -115,11 +118,11 @@ export default function Header({ props }) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link style={{textDecoration: 'none',color:"white"}}  to="/" relative="path">
-            {/* Welcome {user.displayName} */}
-            Welcome
+            <Link style={{ textDecoration: 'none', color: "white" }} to="/" relative="path">
+              Welcome {user.displayName}
+
             </Link>
-           
+
           </Typography>
 
 

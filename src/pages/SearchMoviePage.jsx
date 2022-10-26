@@ -26,7 +26,7 @@ export default function SearchMoviePage() {
     // const movieByKeyword = useMovie(selectGetMovieByKeyword);
     const movies = useMovie(selectMovies);
     let navigate = useNavigate();
-    console.log(movies)
+    
     const navigateToDetail = (movieId) => {
         // getByID(movieId);
         navigate(`/${movieId}`);

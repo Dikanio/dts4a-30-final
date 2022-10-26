@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Box, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation as SwiperNavigation } from "swiper";
@@ -11,22 +11,23 @@ import useMovie, {
   selectMovie,
   selectMovieById
 } from "../stores/Movie";
+
 export default function MovieList({ images, section, type }) {
   let navigate = useNavigate();
 
   if (!type) {
     type = "image";
   }
-
   const getByID = useMovie(selectMovieById);
   const movie = useMovie(selectMovie);
 
-  const navigateToDetail = (movieId) => {
+  const navigateToDetail =  (movieId) => {
     // getByID(movieId);
+    getByID(movieId);
     navigate(`/${movieId}`);
     // window.location.reload(false);
   };
-  
+
   return (
     <Box sx={{ paddingTop: 2, paddingBottom: 2 }}>
       <Typography sx={{ color: "#E5E5E5", fontWeight: 500, fontSize: "26px" }}>

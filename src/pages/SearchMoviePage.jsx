@@ -27,53 +27,61 @@ export default function SearchMoviePage() {
     const movieByKeyword = useMovie(selectGetMovieByKeyword);
     const movies = useMovie(selectMovies);
     let navigate = useNavigate();
-    // let { keyWord } = useParams();
-    // useEffect(() => {
 
-    //     movieByKeyword(keyWord)
 
-    // }, []);
     const navigateToDetail = (movieId) => {
         // getByID(movieId);
         navigate(`/${movieId}`);
-        // window.location.reload(false);
     };
     return (
-        <>
-            <Grid container spacing={2} sx={{ display: "flex-container" }} p={2}>
-                {movies.map((item) => (
-                    <Grid item xs={3} key={item.id} sx={{
-                        ":hover": {
-                            cursor: "pointer",
-                        },
-                    }}>
+        (movies.length != 0) ?
+
+            <>
+                <Grid container spacing={2} sx={{ display: "flex-container" }} p={2}>
+                    {movies.map((item) => (
+                        <Grid item xs={3} key={item.id} sx={{
+                            ":hover": {
+                                cursor: "pointer",
+                            },
+                        }}>
 
 
-                        <div style={{ position: "relative" }}>
-                            <img
-                                onClick={() => {
-                                    navigateToDetail(item.id);
-                                }}
-                                src={(item.backdrop_path != null) ? `https://image.tmdb.org/t/p/original${item.backdrop_path}` : `${beast}`}
-                                // srcSet={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
-                                alt={item.title}
-                                loading={"lazy"}
-                                width={'100%'}
+                            <div style={{ position: "relative" }}>
+                                <img
+                                    onClick={() => {
+                                        navigateToDetail(item.id);
+                                    }}
+                                    src={(item.backdrop_path != null) ? `https://image.tmdb.org/t/p/original${item.backdrop_path}` : `${beast}`}
+                                    // srcSet={`https://image.tmdb.org/t/p/original${item.backdrop_path}`}
+                                    alt={item.title}
+                                    loading={"lazy"}
+                                    width={'100%'}
 
-                            />
-                            <Typography gutterBottom variant="body2" sx={{color:"white"}} component="div">
-                                {item.title}
-                            </Typography>
-
-
-                        </div>
+                                />
+                                <Typography gutterBottom variant="body2" sx={{ color: "white" }} component="div">
+                                    {item.title}
+                                </Typography>
 
 
-                    </Grid>
-                ))}
+                            </div>
 
 
-            </Grid>
-        </>
+                        </Grid>
+                    ))}
+
+
+                </Grid>
+            </>
+
+            :
+
+            <>
+                <Grid container spacing={2}  justifyContent='space-around' sx={{height:'500px' }} p={2}>
+                    <Typography variant="h4" sx={{color:"white"}} alignContent={'center'}>Movie Not Found.</Typography>
+
+
+                </Grid>
+            </>
     );
 }
+

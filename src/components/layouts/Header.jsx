@@ -69,7 +69,6 @@ export default function Header({ props }) {
   const searchMovie = (evt) => {
     evt.preventDefault();
     navigate(`/find/${keyword}`);
-    window.location.reload(false);
   };
   return (
     // <Box sx={{ backgroundColor: "#141414" }}>

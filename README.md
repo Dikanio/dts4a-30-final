@@ -1,19 +1,13 @@
 # DTS REA4 Final Project
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+# LINK PROJECT 
+https://dts4a-30-final.netlify.app/
 
-## Daftar pair
+# Project Overview
+- Menampilkan data movie (Now Playing, Popular, Top Rated)
+- Menggunakan API Movie dari TMDB
+- Dengan Fitur Tambahan Seacrh Movie By Keyword serta penambahan Password Strength pada Registrasi
+- Login Menggunakan API Firebase Login dengan Email Password atau dengan akun Google
+- State Management yang digunakan adalah zustand 
+- form daftar dan login menggunakan third party (Formik dan Yup) untuk validasi 
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
-
-## Fork and Clone
-
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
-
-`dts4[a/b/c]-[nomor pair]-final`
-
-Contoh: `dts4a-01-final`
-
-## Branching, commit
-
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!

@@ -106,7 +106,8 @@ export default function Header({ props }) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            Welcome {user.displayName}
+            Welcome
+            {/* Welcome {user.displayName} */}
           </Typography>
 
           <Search>

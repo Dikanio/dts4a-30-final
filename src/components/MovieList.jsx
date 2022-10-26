@@ -24,7 +24,7 @@ export default function MovieList({ images, section, type }) {
   const navigateToDetail = (movieId) => {
     // getByID(movieId);
     navigate(`/${movieId}`);
-    window.location.reload(false);
+    // window.location.reload(false);
   };
   
   return (

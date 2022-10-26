@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import React from "react";
+// import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 // import { styled } from '@mui/material/styles';
 
@@ -10,8 +10,7 @@ import {
 import beast from "../assets/images/beast.jpg"
 // zustand
 import useMovie, {
-    selectMovies,
-    selectGetMovieByKeyword
+    selectMovies
 } from "../stores/Movie";
 
 // const Item = styled(Paper)(({ theme }) => ({
@@ -24,7 +23,7 @@ import useMovie, {
 // }));
 export default function SearchMoviePage() {
 
-    const movieByKeyword = useMovie(selectGetMovieByKeyword);
+    // const movieByKeyword = useMovie(selectGetMovieByKeyword);
     const movies = useMovie(selectMovies);
     let navigate = useNavigate();
 
@@ -34,7 +33,7 @@ export default function SearchMoviePage() {
         navigate(`/${movieId}`);
     };
     return (
-        (movies.length != 0) ?
+        (movies.length !== 0) ?
 
             <>
                 <Grid container spacing={2} sx={{ display: "flex-container" }} p={2}>

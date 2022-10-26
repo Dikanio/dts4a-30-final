@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation as SwiperNavigation } from "swiper";
@@ -8,7 +8,7 @@ import { Navigation as SwiperNavigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import useMovie, {
-  selectMovie,
+  // selectMovie,
   selectMovieById
 } from "../stores/Movie";
 
@@ -19,7 +19,7 @@ export default function MovieList({ images, section, type }) {
     type = "image";
   }
   const getByID = useMovie(selectMovieById);
-  const movie = useMovie(selectMovie);
+  // const movie = useMovie(selectMovie);
 
   const navigateToDetail =  (movieId) => {
     // getByID(movieId);
@@ -48,7 +48,7 @@ export default function MovieList({ images, section, type }) {
                 }}
                 component="img"
                 src={
-                  type == "image"
+                  type === "image"
                     ? `https://image.tmdb.org/t/p/original${item.backdrop_path}`
                     : `https://image.tmdb.org/t/p/original${item.poster_path}`
                 }

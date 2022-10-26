@@ -9,8 +9,6 @@ import MovieList from "../components/MovieList";
 import DetailMovie from "../components/DetailMovie";
 // zustand
 import useMovie, {
-  selectNowPlaying,
-  selectGetNowPlaying,
   selectPopular,
   selectGetPopular,
   selectTopRated,

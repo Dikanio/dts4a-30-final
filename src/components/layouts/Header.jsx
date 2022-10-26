@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { AppBar, Box, Button, Toolbar, Typography, Grid } from "@mui/material";
+import React, { useState } from "react";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { logOut } from "../../auth/firebase";
 import { styled, alpha } from '@mui/material/styles';
@@ -13,7 +13,7 @@ import { useAuthState } from "react-firebase-hooks/auth"
 
 // zustand
 import useMovie, {
-  selectMovies,
+  // selectMovies,
   selectGetMovieByKeyword
 } from "../../stores/Movie";
 
@@ -68,16 +68,16 @@ export default function Header({ props }) {
   const navigate = useNavigate();
 
   const movieByKeyword = useMovie(selectGetMovieByKeyword);
-  const movies = useMovie(selectMovies);
+  // const movies = useMovie(selectMovies);
 
   const [keyword, setKeyword] = useState("");
 
   const onChangeKeyword = (evt) => {
     setKeyword(evt.target.value);
   };
-  const searchMovie = (evt) => {
+  const searchMovie = async (evt) => {
     evt.preventDefault();
-    movieByKeyword(keyword)
+    await movieByKeyword(keyword)
     navigate(`/find`);
   };
   return (

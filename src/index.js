@@ -54,7 +54,8 @@ root.render(
             <ProtectedComponent>
               <Header />
               <Box sx={{ background: "#141414" }}>
-                <SearchMoviePage />
+                test
+                {/* <SearchMoviePage /> */}
               </Box>
               <Footer />
             </ProtectedComponent>

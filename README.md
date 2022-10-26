@@ -12,4 +12,4 @@ https://dts4a-30-final.netlify.app/
 - form daftar dan login menggunakan third party (Formik dan Yup) untuk validasi 
 
 # example
-![](view.png)
+![](view.gif)
